@@ -8,10 +8,9 @@ const needsSeed = !existsSync(dbPath);
 if (needsSeed) {
   console.log("Database not found at", dbPath, "- running seed with", dbUrl);
   try {
-    execSync("npx dineway seed seed/seed.json", {
+    execSync(`npx dineway seed seed/seed.json --database "${dbUrl}"`, {
       stdio: "inherit",
       cwd: process.cwd(),
-      env: { ...process.env, DINEWAY_DATABASE_URL: dbUrl },
     });
     console.log("Seed completed successfully");
   } catch (e) {
