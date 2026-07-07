@@ -16,12 +16,36 @@
       "label": "Blog Posts",
       "labelSingular": "Blog Post",
       "urlPattern": "/blog/{slug}",
-      "supports": ["drafts", "revisions", "search", "seo"],
+      "supports": [
+        "drafts",
+        "revisions",
+        "search",
+        "seo"
+      ],
       "fields": [
-        { "slug": "title", "label": "Title", "type": "string", "required": true, "searchable": true },
-        { "slug": "featured_image", "label": "Featured Image", "type": "image" },
-        { "slug": "content", "label": "Content", "type": "portableText", "searchable": true },
-        { "slug": "excerpt", "label": "Excerpt", "type": "text" }
+        {
+          "slug": "title",
+          "label": "Title",
+          "type": "string",
+          "required": true,
+          "searchable": true
+        },
+        {
+          "slug": "featured_image",
+          "label": "Featured Image",
+          "type": "image"
+        },
+        {
+          "slug": "content",
+          "label": "Content",
+          "type": "portableText",
+          "searchable": true
+        },
+        {
+          "slug": "excerpt",
+          "label": "Excerpt",
+          "type": "text"
+        }
       ]
     },
     {
@@ -29,12 +53,36 @@
       "label": "News",
       "labelSingular": "News",
       "urlPattern": "/news/{slug}",
-      "supports": ["drafts", "revisions", "search", "seo"],
+      "supports": [
+        "drafts",
+        "revisions",
+        "search",
+        "seo"
+      ],
       "fields": [
-        { "slug": "title", "label": "Title", "type": "string", "required": true, "searchable": true },
-        { "slug": "featured_image", "label": "Featured Image", "type": "image" },
-        { "slug": "content", "label": "Content", "type": "portableText", "searchable": true },
-        { "slug": "excerpt", "label": "Excerpt", "type": "text" }
+        {
+          "slug": "title",
+          "label": "Title",
+          "type": "string",
+          "required": true,
+          "searchable": true
+        },
+        {
+          "slug": "featured_image",
+          "label": "Featured Image",
+          "type": "image"
+        },
+        {
+          "slug": "content",
+          "label": "Content",
+          "type": "portableText",
+          "searchable": true
+        },
+        {
+          "slug": "excerpt",
+          "label": "Excerpt",
+          "type": "text"
+        }
       ]
     },
     {
@@ -42,13 +90,41 @@
       "label": "Menu Items",
       "labelSingular": "Menu Item",
       "urlPattern": "/menu/{slug}",
-      "supports": ["drafts", "revisions", "search", "seo"],
+      "supports": [
+        "drafts",
+        "revisions",
+        "search",
+        "seo"
+      ],
       "fields": [
-        { "slug": "title", "label": "Title", "type": "string", "required": true, "searchable": true },
-        { "slug": "description", "label": "Description", "type": "text", "searchable": true },
-        { "slug": "price", "label": "Price", "type": "string" },
-        { "slug": "category", "label": "Category", "type": "string" },
-        { "slug": "image", "label": "Image", "type": "image" }
+        {
+          "slug": "title",
+          "label": "Title",
+          "type": "string",
+          "required": true,
+          "searchable": true
+        },
+        {
+          "slug": "description",
+          "label": "Description",
+          "type": "text",
+          "searchable": true
+        },
+        {
+          "slug": "price",
+          "label": "Price",
+          "type": "string"
+        },
+        {
+          "slug": "category",
+          "label": "Category",
+          "type": "string"
+        },
+        {
+          "slug": "image",
+          "label": "Image",
+          "type": "image"
+        }
       ]
     },
     {
@@ -56,13 +132,41 @@
       "label": "Reviews",
       "labelSingular": "Review",
       "urlPattern": "/reviews/{slug}",
-      "supports": ["drafts", "revisions", "search", "seo"],
+      "supports": [
+        "drafts",
+        "revisions",
+        "search",
+        "seo"
+      ],
       "fields": [
-        { "slug": "title", "label": "Title", "type": "string", "required": true, "searchable": true },
-        { "slug": "content", "label": "Content", "type": "portableText", "searchable": true },
-        { "slug": "rating", "label": "Rating", "type": "integer" },
-        { "slug": "author", "label": "Author", "type": "string" },
-        { "slug": "image", "label": "Image", "type": "image" }
+        {
+          "slug": "title",
+          "label": "Title",
+          "type": "string",
+          "required": true,
+          "searchable": true
+        },
+        {
+          "slug": "content",
+          "label": "Content",
+          "type": "portableText",
+          "searchable": true
+        },
+        {
+          "slug": "rating",
+          "label": "Rating",
+          "type": "integer"
+        },
+        {
+          "slug": "author",
+          "label": "Author",
+          "type": "string"
+        },
+        {
+          "slug": "image",
+          "label": "Image",
+          "type": "image"
+        }
       ]
     },
     {
@@ -70,11 +174,29 @@
       "label": "Gallery",
       "labelSingular": "Gallery Item",
       "urlPattern": "/gallery/{slug}",
-      "supports": ["drafts", "revisions", "search", "seo"],
+      "supports": [
+        "drafts",
+        "revisions",
+        "search",
+        "seo"
+      ],
       "fields": [
-        { "slug": "title", "label": "Title", "type": "string" },
-        { "slug": "image", "label": "Image", "type": "image", "required": true },
-        { "slug": "caption", "label": "Caption", "type": "text" }
+        {
+          "slug": "title",
+          "label": "Title",
+          "type": "string"
+        },
+        {
+          "slug": "image",
+          "label": "Image",
+          "type": "image",
+          "required": true
+        },
+        {
+          "slug": "caption",
+          "label": "Caption",
+          "type": "text"
+        }
       ]
     }
   ],
@@ -83,13 +205,41 @@
       "name": "primary",
       "label": "Primary Navigation",
       "items": [
-        { "type": "custom", "label": "Home", "url": "/" },
-        { "type": "custom", "label": "Menu", "url": "/menu" },
-        { "type": "custom", "label": "Reviews", "url": "/reviews" },
-        { "type": "custom", "label": "Gallery", "url": "/gallery" },
-        { "type": "custom", "label": "Blog", "url": "/blog" },
-        { "type": "custom", "label": "News", "url": "/news" },
-        { "type": "custom", "label": "Contact", "url": "/contact" }
+        {
+          "type": "custom",
+          "label": "Home",
+          "url": "/"
+        },
+        {
+          "type": "custom",
+          "label": "Menu",
+          "url": "/menu"
+        },
+        {
+          "type": "custom",
+          "label": "Reviews",
+          "url": "/reviews"
+        },
+        {
+          "type": "custom",
+          "label": "Gallery",
+          "url": "/gallery"
+        },
+        {
+          "type": "custom",
+          "label": "Blog",
+          "url": "/blog"
+        },
+        {
+          "type": "custom",
+          "label": "News",
+          "url": "/news"
+        },
+        {
+          "type": "custom",
+          "label": "Contact",
+          "url": "/contact"
+        }
       ]
     }
   ],
@@ -110,12 +260,43 @@
           "title": "Die Tradition der italienischen Küche im Schwarzwald",
           "excerpt": "Seit Generationen bringen wir die Aromen Italiens in den Schwarzwald. Entdecken Sie die Geschichte unseres Familienrestaurants.",
           "content": [
-            { "_type": "block", "style": "normal", "children": [{ "_type": "span", "text": "Unsere Reise begann in der sonnigen Region Apuliens, wo die Familie Marcucci seit Generationen die Kunst der italienischen Küche pflegt. Heute teilen wir diese Leidenschaft mit unseren Gästen in Hinterzarten." }] },
-            { "_type": "block", "style": "normal", "children": [{ "_type": "span", "text": "Jedes Gericht auf unserer Speisekarte erzählt eine Geschichte – von der Holzofen-Pizza mit knusprigem Boden bis zur hausgemachten Pasta, die nach traditionellen Familienrezepten zubereitet wird." }] },
-            { "_type": "block", "style": "normal", "children": [{ "_type": "span", "text": "Was unsere Küche besonders macht, ist die Kombination aus authentischen italienischen Rezepten und den frischen Zutaten aus der Region. Unsere Gäste schätzen diese Verbindung von italienischer Tradition und Schwarzwälder Gastfreundschaft." }] }
+            {
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "Unsere Reise begann in der sonnigen Region Apuliens, wo die Familie Marcucci seit Generationen die Kunst der italienischen Küche pflegt. Heute teilen wir diese Leidenschaft mit unseren Gästen in Hinterzarten."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "Jedes Gericht auf unserer Speisekarte erzählt eine Geschichte – von der Holzofen-Pizza mit knusprigem Boden bis zur hausgemachten Pasta, die nach traditionellen Familienrezepten zubereitet wird."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "Was unsere Küche besonders macht, ist die Kombination aus authentischen italienischen Rezepten und den frischen Zutaten aus der Region. Unsere Gäste schätzen diese Verbindung von italienischer Tradition und Schwarzwälder Gastfreundschaft."
+                }
+              ]
+            }
           ]
         },
-        "bylines": [{ "byline": "byline-editorial" }]
+        "bylines": [
+          {
+            "byline": "byline-editorial"
+          }
+        ]
       },
       {
         "id": "blog-wood-fired-pizza",
@@ -125,12 +306,43 @@
           "title": "Die Kunst der Holzofen-Pizza",
           "excerpt": "Was macht eine perfekte Pizza aus? Bei uns beginnt es mit dem Holzofen und endet mit den frischesten Zutaten.",
           "content": [
-            { "_type": "block", "style": "normal", "children": [{ "_type": "span", "text": "Eine authentische italienische Pizza lebt von drei Dingen: dem Teig, dem Ofen und den Zutaten. Bei uns im Ristorante Leonardo da Vinci wird jede Pizza mit Sorgfalt zubereitet." }] },
-            { "_type": "block", "style": "normal", "children": [{ "_type": "span", "text": "Unser Holzofen verleiht jeder Pizza das unverwechselbare Aroma, das nur durch die perfekte Hitze und den Rauch entsteht. Von der klassischen Margherita bis zur kreativen Pizza Burrata mit Kirschtomaten und Rucola." }] },
-            { "_type": "block", "style": "normal", "children": [{ "_type": "span", "text": "Besonders stolz sind wir auf unsere glutenfreien Pizzen, die bei unseren Gästen grossen Anklang finden – ganz ohne Kompromisse beim Geschmack." }] }
+            {
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "Eine authentische italienische Pizza lebt von drei Dingen: dem Teig, dem Ofen und den Zutaten. Bei uns im Ristorante Leonardo da Vinci wird jede Pizza mit Sorgfalt zubereitet."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "Unser Holzofen verleiht jeder Pizza das unverwechselbare Aroma, das nur durch die perfekte Hitze und den Rauch entsteht. Von der klassischen Margherita bis zur kreativen Pizza Burrata mit Kirschtomaten und Rucola."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "Besonders stolz sind wir auf unsere glutenfreien Pizzen, die bei unseren Gästen grossen Anklang finden – ganz ohne Kompromisse beim Geschmack."
+                }
+              ]
+            }
           ]
         },
-        "bylines": [{ "byline": "byline-editorial" }]
+        "bylines": [
+          {
+            "byline": "byline-editorial"
+          }
+        ]
       },
       {
         "id": "blog-vegetarian-delights",
@@ -140,12 +352,43 @@
           "title": "Vegetarische Genüsse: Mehr als nur Beilage",
           "excerpt": "Unsere vegetarischen Gerichte sind alles andere als langweilig. Entdecken Sie die Vielfalt der italienischen Gemüseküche.",
           "content": [
-            { "_type": "block", "style": "normal", "children": [{ "_type": "span", "text": "Die italienische Küche ist reich an vegetarischen Schätzen. Von der Bruschetta Calabrese mit Tomaten, Rucola und Parmesan bis zur Insalata con Verdure e Ricotta." }] },
-            { "_type": "block", "style": "normal", "children": [{ "_type": "span", "text": "Unsere Gäste schätzen die Vielfalt unseres vegetarischen Angebots, das weit über die klassische Margherita hinausgeht. Probieren Sie unsere Pizza alle Verdure Grigliate mit gegrilltem Gemüse." }] },
-            { "_type": "block", "style": "normal", "children": [{ "_type": "span", "text": "Auch für vegane und glutenfreie Ernährung haben wir passende Optionen – sprechen Sie unser Team einfach an." }] }
+            {
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "Die italienische Küche ist reich an vegetarischen Schätzen. Von der Bruschetta Calabrese mit Tomaten, Rucola und Parmesan bis zur Insalata con Verdure e Ricotta."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "Unsere Gäste schätzen die Vielfalt unseres vegetarischen Angebots, das weit über die klassische Margherita hinausgeht. Probieren Sie unsere Pizza alle Verdure Grigliate mit gegrilltem Gemüse."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "Auch für vegane und glutenfreie Ernährung haben wir passende Optionen – sprechen Sie unser Team einfach an."
+                }
+              ]
+            }
           ]
         },
-        "bylines": [{ "byline": "byline-editorial" }]
+        "bylines": [
+          {
+            "byline": "byline-editorial"
+          }
+        ]
       }
     ],
     "news": [
@@ -157,7 +400,11 @@
           "title": "Saisonale Sommer-Spezialitäten",
           "excerpt": "Geniessen Sie unsere neuen Sommergerichte mit frischen Kräutern und leichten Aromen."
         },
-        "bylines": [{ "byline": "byline-editorial" }]
+        "bylines": [
+          {
+            "byline": "byline-editorial"
+          }
+        ]
       },
       {
         "id": "news-takeaway-service",
@@ -167,7 +414,11 @@
           "title": "Takeaway-Service – Italienisch geniessen zu Hause",
           "excerpt": "Sie möchten unsere italienischen Spezialitäten zu Hause geniessen? Unser Takeaway-Service steht bereit."
         },
-        "bylines": [{ "byline": "byline-editorial" }]
+        "bylines": [
+          {
+            "byline": "byline-editorial"
+          }
+        ]
       },
       {
         "id": "news-outdoor-seating",
@@ -177,10 +428,58 @@
           "title": "Sommerzeit – Geniessen Sie unsere Aussenbestuhlung",
           "excerpt": "Bei schönem Wetter servieren wir Ihnen Ihre Lieblingsgerichte auf unserer sonnigen Terrasse."
         },
-        "bylines": [{ "byline": "byline-editorial" }]
+        "bylines": [
+          {
+            "byline": "byline-editorial"
+          }
+        ]
       }
     ],
     "menu": [
+      {
+        "id": "menu-antipasto-misto",
+        "slug": "antipasto-misto",
+        "status": "published",
+        "data": {
+          "title": "Antipasto Misto",
+          "description": "Gemischter Vorspeisenteller mit Salami, Parmaschinken, Bruschetta, Tomate-Mozzarella, gegrilltem Gemüse",
+          "price": "€18,00",
+          "category": "Antipasti"
+        }
+      },
+      {
+        "id": "menu-vitello-tonnato",
+        "slug": "vitello-tonnato",
+        "status": "published",
+        "data": {
+          "title": "Vitello Tonnato",
+          "description": "Dünn geschnittenes Kalbfleisch mit Thunfischcreme und Kapern",
+          "price": "€17,00",
+          "category": "Antipasti"
+        }
+      },
+      {
+        "id": "menu-carpaccio-manzo",
+        "slug": "carpaccio-di-manzo",
+        "status": "published",
+        "data": {
+          "title": "Carpaccio di Manzo",
+          "description": "Dünn geschnittenes Rinderfilet mit Rucola und Parmesan",
+          "price": "€17,00",
+          "category": "Antipasti"
+        }
+      },
+      {
+        "id": "menu-caprese",
+        "slug": "caprese",
+        "status": "published",
+        "data": {
+          "title": "Caprese",
+          "description": "Kirschtomaten mit Büffel-Mozzarella oder Burrata",
+          "price": "€13,00",
+          "category": "Antipasti"
+        }
+      },
       {
         "id": "menu-bruschetta-calabrese",
         "slug": "bruschetta-calabrese",
@@ -193,7 +492,18 @@
         }
       },
       {
-        "id": "menu-carpaccio-di-tonno",
+        "id": "menu-bruschetta-gamberi",
+        "slug": "bruschetta-con-gamberi",
+        "status": "published",
+        "data": {
+          "title": "Bruschetta con Gamberi",
+          "description": "Weißbrot mit Olivenpesto, Gambas, Kirschtomaten",
+          "price": "€16,00",
+          "category": "Antipasti"
+        }
+      },
+      {
+        "id": "menu-carpaccio-tonno",
         "slug": "carpaccio-di-tonno",
         "status": "published",
         "data": {
@@ -201,6 +511,138 @@
           "description": "Thunfisch Carpaccio",
           "price": "€19,00",
           "category": "Antipasti"
+        }
+      },
+      {
+        "id": "menu-scampetti-limone",
+        "slug": "scampetti-al-limone",
+        "status": "published",
+        "data": {
+          "title": "Scampetti al Limone",
+          "description": "Scampetti in Knoblauch-Zitronensauce",
+          "price": "€21,00",
+          "category": "Antipasti"
+        }
+      },
+      {
+        "id": "menu-insalata-mista",
+        "slug": "insalata-mista",
+        "status": "published",
+        "data": {
+          "title": "Insalata Mista",
+          "description": "Großer gemischter Salat mit Dressing",
+          "price": "€9,50",
+          "category": "Insalate"
+        }
+      },
+      {
+        "id": "menu-insalata-davinci",
+        "slug": "insalata-leonardo-da-vinci",
+        "status": "published",
+        "data": {
+          "title": "Insalata Leonardo da Vinci",
+          "description": "Großer gemischter Salat mit Mozzarella, Thunfisch, Schinken und Erbsen",
+          "price": "€16,00",
+          "category": "Insalate"
+        }
+      },
+      {
+        "id": "menu-insalata-tacchino",
+        "slug": "insalata-di-tacchino",
+        "status": "published",
+        "data": {
+          "title": "Insalata di Tacchino",
+          "description": "Großer gemischter Salat mit Putenstreifen und Dressing",
+          "price": "€17,00",
+          "category": "Insalate"
+        }
+      },
+      {
+        "id": "menu-insalata-scampi",
+        "slug": "insalata-con-scampi",
+        "status": "published",
+        "data": {
+          "title": "Insalata con Scampi",
+          "description": "Großer gemischter Salat mit Garnelen, Essig und Öl",
+          "price": "€18,00",
+          "category": "Insalate"
+        }
+      },
+      {
+        "id": "menu-spaghetti-aglio-olio",
+        "slug": "spaghetti-aglio-olio-peperoncini",
+        "status": "published",
+        "data": {
+          "title": "Spaghetti Aglio, Olio e Peperoncini",
+          "description": "Spaghetti mit Olivenöl, Knoblauch und Chili",
+          "price": "€12,50",
+          "category": "Primi Piatti"
+        }
+      },
+      {
+        "id": "menu-spaghetti-gamberi",
+        "slug": "spaghetti-aglio-olio-coda-gamberi",
+        "status": "published",
+        "data": {
+          "title": "Spaghetti Aglio Olio e Coda di Gamberi",
+          "description": "Spaghetti mit Knoblauch, Olivenöl, Riesengarnelen & Rucola",
+          "price": "€18,50",
+          "category": "Primi Piatti"
+        }
+      },
+      {
+        "id": "menu-fettuccini-zafferano",
+        "slug": "fettuccini-gamberi-zafferano",
+        "status": "published",
+        "data": {
+          "title": "Fettuccini Gamberi al Zafferano",
+          "description": "Fettuccine mit Garnelen in Safransauce",
+          "price": "€17,50",
+          "category": "Primi Piatti"
+        }
+      },
+      {
+        "id": "menu-fettuccini-tartufo",
+        "slug": "fettucini-crema-tartufo",
+        "status": "published",
+        "data": {
+          "title": "Fettucini con Crema di Tartufo",
+          "description": "Fettuccine in Trüffelcremesauce",
+          "price": "€18,00",
+          "category": "Primi Piatti"
+        }
+      },
+      {
+        "id": "menu-risotto-funghi",
+        "slug": "risotto-ai-funghi-misti",
+        "status": "published",
+        "data": {
+          "title": "Risotto Ai Funghi Misti",
+          "description": "Risotto mit gemischten Pilzen",
+          "price": "€16,00",
+          "category": "Primi Piatti"
+        }
+      },
+      {
+        "id": "menu-lasagne",
+        "slug": "lasagne",
+        "status": "published",
+        "data": {
+          "title": "Lasagne",
+          "description": "Hausgemachte Lasagne mit Hackfleisch und Bechamelsauce",
+          "price": "€15,00",
+          "category": "Primi Piatti"
+        }
+      },
+      {
+        "id": "menu-pizza-prosciutto-funghi",
+        "slug": "pizza-prosciutto-funghi",
+        "status": "published",
+        "data": {
+          "title": "Pizza Prosciutto e Funghi",
+          "description": "Schinken und Champignons",
+          "price": "€12,50",
+          "category": "Pizza"
         }
       },
       {
@@ -237,12 +679,89 @@
         }
       },
       {
+        "id": "menu-pizza-frutti-mare",
+        "slug": "pizza-frutti-di-mare",
+        "status": "published",
+        "data": {
+          "title": "Pizza Frutti di Mare",
+          "description": "Meeresfrüchte",
+          "price": "€18,00",
+          "category": "Pizza"
+        }
+      },
+      {
+        "id": "menu-pizza-tonnato",
+        "slug": "pizza-tonnato-bianca",
+        "status": "published",
+        "data": {
+          "title": "Pizza Tonnato (Bianca)",
+          "description": "Mit Vitello Tonnato, Kapern und Rucola",
+          "price": "€18,00",
+          "category": "Pizza"
+        }
+      },
+      {
+        "id": "menu-pizza-toto",
+        "slug": "pizza-toto",
+        "status": "published",
+        "data": {
+          "title": "Pizza ToTo",
+          "description": "Carpaccio vom Räucherlachs, Kirschtomaten und Balsamico",
+          "price": "€17,00",
+          "category": "Pizza"
+        }
+      },
+      {
+        "id": "menu-pizza-parmigiana",
+        "slug": "pizza-parmigiana",
+        "status": "published",
+        "data": {
+          "title": "Pizza Parmigiana",
+          "description": "Auberginen, Parmesan und Büffel-Mozzarella",
+          "price": "€15,00",
+          "category": "Pizza"
+        }
+      },
+      {
+        "id": "menu-pizza-marco-massi",
+        "slug": "pizza-marco-massi",
+        "status": "published",
+        "data": {
+          "title": "Pizza Marco & Massi",
+          "description": "Mit Salsiccia piccante, Kartoffeln und Kirschtomaten",
+          "price": "€16,50",
+          "category": "Pizza"
+        }
+      },
+      {
         "id": "menu-bistecca-pizzaiola",
-        "slug": "bistecca-pizzaiola",
+        "slug": "bistecca-alla-pizzaiola",
         "status": "published",
         "data": {
           "title": "Bistecca alla Pizzaiola",
           "description": "Argentinisches Rumpsteak, Oliven, Kapern, in Tomatensauce",
+          "price": "€30,00",
+          "category": "Secondi Piatti"
+        }
+      },
+      {
+        "id": "menu-bistecca-gorgonzola",
+        "slug": "bistecca-gorgonzola",
+        "status": "published",
+        "data": {
+          "title": "Bistecca Gorgonzola",
+          "description": "Argentinisches Rumpsteak in Gorgonzolasauce",
+          "price": "€30,00",
+          "category": "Secondi Piatti"
+        }
+      },
+      {
+        "id": "menu-tagliata-manzo",
+        "slug": "tagliata-di-manzo",
+        "status": "published",
+        "data": {
+          "title": "Tagliata di Manzo",
+          "description": "Tranchiertes argentinisches Rumpsteak mit Rucola und Parmesan",
           "price": "€30,00",
           "category": "Secondi Piatti"
         }
@@ -259,6 +778,28 @@
         }
       },
       {
+        "id": "menu-filetto-pepe-verde",
+        "slug": "filetto-pepe-verde",
+        "status": "published",
+        "data": {
+          "title": "Filetto Pepe Verde",
+          "description": "Argentinisches Rinderfilet mit grüner Pfeffersauce",
+          "price": "€35,00",
+          "category": "Secondi Piatti"
+        }
+      },
+      {
+        "id": "menu-carre-agnello",
+        "slug": "carre-agnello-erbe-aromatiche",
+        "status": "published",
+        "data": {
+          "title": "Carré D'Agnello alle Erbe Aromatiche",
+          "description": "Neuseeländisches Lammkarré mit frischen Kräutern",
+          "price": "€37,00",
+          "category": "Secondi Piatti"
+        }
+      },
+      {
         "id": "menu-gamberi-griglia",
         "slug": "gamberi-alla-griglia",
         "status": "published",
@@ -267,6 +808,72 @@
           "description": "Gegrillte Riesengarnelen",
           "price": "€33,00",
           "category": "Secondi Piatti"
+        }
+      },
+      {
+        "id": "menu-branzino-romana",
+        "slug": "filetto-branzino-romana",
+        "status": "published",
+        "data": {
+          "title": "Filetto di Branzino alla Romana",
+          "description": "Wolfsbarschfilet mit Parmaschinken und Salbei",
+          "price": "€31,00",
+          "category": "Secondi Piatti"
+        }
+      },
+      {
+        "id": "menu-grigliata-pesce",
+        "slug": "grigliata-di-pesce",
+        "status": "published",
+        "data": {
+          "title": "Grigliata di Pesce",
+          "description": "Gemischte Fischplatte",
+          "price": "€33,00",
+          "category": "Secondi Piatti"
+        }
+      },
+      {
+        "id": "menu-tiramisu",
+        "slug": "tiramisu",
+        "status": "published",
+        "data": {
+          "title": "Tiramisu",
+          "description": "Italienisches Dessert mit Mascarpone, Espresso und Kakao",
+          "price": "€8,00",
+          "category": "Dessert"
+        }
+      },
+      {
+        "id": "menu-panna-cotta",
+        "slug": "panna-cotta",
+        "status": "published",
+        "data": {
+          "title": "Panna Cotta",
+          "description": "Italienische Sahnecreme mit Beerensauce",
+          "price": "€8,00",
+          "category": "Dessert"
+        }
+      },
+      {
+        "id": "menu-semifreddo",
+        "slug": "semifreddo-torroncino",
+        "status": "published",
+        "data": {
+          "title": "Semifreddo Torroncino",
+          "description": "Haselnussmousse-Halbgefrorenes",
+          "price": "€9,00",
+          "category": "Dessert"
+        }
+      },
+      {
+        "id": "menu-gemischtes-eis",
+        "slug": "gemischtes-eis",
+        "status": "published",
+        "data": {
+          "title": "Gemischtes Eis",
+          "description": "3 Kugeln gemischtes Speiseeis mit Sahne",
+          "price": "€7,50",
+          "category": "Dessert"
         }
       }
     ],
@@ -278,7 +885,16 @@
         "data": {
           "title": "Great authentic Italian food",
           "content": [
-            { "_type": "block", "style": "normal", "children": [{ "_type": "span", "text": "Great authentic Italian food! The staff was very nice. Gluten free pizza and pasta available. Personally had the GF pizza and it was delicious. Great desserts too." }] }
+            {
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "Great authentic Italian food! The staff was very nice. Gluten free pizza and pasta available. Personally had the GF pizza and it was delicious. Great desserts too."
+                }
+              ]
+            }
           ],
           "rating": 5,
           "author": "Cortney M."
@@ -291,7 +907,16 @@
         "data": {
           "title": "Authentic Italian family meal",
           "content": [
-            { "_type": "block", "style": "normal", "children": [{ "_type": "span", "text": "Very nice authentic Italian food. We went there for a family meal. The pizzas were very nice. Try this Italian in Hinterzarten. You won't be disappointed." }] }
+            {
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "Very nice authentic Italian food. We went there for a family meal. The pizzas were very nice. Try this Italian in Hinterzarten. You won't be disappointed."
+                }
+              ]
+            }
           ],
           "rating": 5,
           "author": "G R."
@@ -304,7 +929,16 @@
         "data": {
           "title": "Best ever!",
           "content": [
-            { "_type": "block", "style": "normal", "children": [{ "_type": "span", "text": "Best ever!!! We enjoyed our lunch. The food is great & tasty & unique. The crew is lovely. I recommended this restaurant very much." }] }
+            {
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "Best ever!!! We enjoyed our lunch. The food is great & tasty & unique. The crew is lovely. I recommended this restaurant very much."
+                }
+              ]
+            }
           ],
           "rating": 5,
           "author": "Galit S."
@@ -317,7 +951,16 @@
         "data": {
           "title": "Family dining at its best",
           "content": [
-            { "_type": "block", "style": "normal", "children": [{ "_type": "span", "text": "Very nice authentic Italian food. The young man who served us was matter of fact which we really liked. We went for food and that's what was served. No more, no less." }] }
+            {
+              "_type": "block",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "text": "Very nice authentic Italian food. The young man who served us was matter of fact which we really liked. We went for food and that's what was served. No more, no less."
+                }
+              ]
+            }
           ],
           "rating": 5,
           "author": "Family Guest"
@@ -350,6 +993,87 @@
         "data": {
           "title": "Hausgemachte Pasta",
           "caption": "Frische Pasta nach traditionellem Familienrezept"
+        }
+      },
+      {
+        "id": "gallery-antipasti-1",
+        "slug": "antipasti-platter",
+        "status": "published",
+        "data": {
+          "title": "Antipasti Platte",
+          "caption": "Gemischter Vorspeisenteller"
+        }
+      },
+      {
+        "id": "gallery-pizza-2",
+        "slug": "pizza-burrata",
+        "status": "published",
+        "data": {
+          "title": "Pizza Burrata",
+          "caption": "Mit Burrata, Kirschtomaten und Rucola"
+        }
+      },
+      {
+        "id": "gallery-davinci",
+        "slug": "davinci-sign",
+        "status": "published",
+        "data": {
+          "title": "Ristorante da Vinci",
+          "caption": "Eingang zum Ristorante Leonardo da Vinci"
+        }
+      },
+      {
+        "id": "gallery-interior-2",
+        "slug": "restaurant-dining",
+        "status": "published",
+        "data": {
+          "title": "Speisesaal",
+          "caption": "Stimmungsvoller Innenbereich"
+        }
+      },
+      {
+        "id": "gallery-branzino",
+        "slug": "branzino-dish",
+        "status": "published",
+        "data": {
+          "title": "Branzino alla Romana",
+          "caption": "Wolfsbarschfilet mit Parmaschinken und Salbei"
+        }
+      },
+      {
+        "id": "gallery-steak",
+        "slug": "bistecca",
+        "status": "published",
+        "data": {
+          "title": "Bistecca",
+          "caption": "Argentinisches Rumpsteak"
+        }
+      },
+      {
+        "id": "gallery-tiramisu",
+        "slug": "tiramisu",
+        "status": "published",
+        "data": {
+          "title": "Tiramisu",
+          "caption": "Hausgemachtes Tiramisu"
+        }
+      },
+      {
+        "id": "gallery-exterior",
+        "slug": "restaurant-exterior",
+        "status": "published",
+        "data": {
+          "title": "Restaurant Außenansicht",
+          "caption": "Ristorante Leonardo da Vinci, Rathausstraße 1"
+        }
+      },
+      {
+        "id": "gallery-terrace",
+        "slug": "outdoor-terrace",
+        "status": "published",
+        "data": {
+          "title": "Terrasse",
+          "caption": "Sitzgelegenheiten im Freien"
         }
       }
     ]
