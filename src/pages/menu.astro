@@ -4,9 +4,23 @@ import Base from "../layouts/Base.astro";
 
 const { entries: menuItems, cacheHint } = await getDinewayCollection("menu", {
   status: "published",
-  orderBy: { title: "asc" },
 });
 Astro.cache.set(cacheHint);
+
+const categories = ["Antipasti", "Insalate", "Primi Piatti", "Pizza", "Secondi Piatti", "Dessert"];
+const categoryLabels = {
+  Antipasti: "Antipasti",
+  Insalate: "Insalate",
+  "Primi Piatti": "Primi Piatti",
+  Pizza: "Pizza",
+  "Secondi Piatti": "Secondi Piatti",
+  Dessert: "Dessert",
+};
+
+const grouped = {};
+for (const cat of categories) {
+  grouped[cat] = menuItems.filter((item) => item.data?.category === cat);
+}
 ---
 
 <Base title="Menu – Ristorante Leonardo da Vinci Hinterzarten" description="Browse our authentic Italian menu at Ristorante Leonardo da Vinci in Hinterzarten. Wood-fired pizza, homemade pasta, fresh salads, and grilled specialties.">
@@ -25,91 +39,28 @@ Astro.cache.set(cacheHint);
         </p>
       </div>
 
-      {menuItems.length > 0 ? (
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem;">
-          {menuItems.map(item => (
-            <div style="background: #fff; border: 1px solid var(--color-border); border-radius: 8px; padding: 1.5rem; transition: box-shadow 0.2s;">
-              <h3 style="font-size: 1.2rem; color: var(--color-accent); margin-bottom: 0.5rem;">{item.data.title}</h3>
-              {item.data.description && <p style="color: var(--color-muted); font-size: 0.95rem;">{item.data.description}</p>}
-              {item.data.price && <p style="margin-top: 0.75rem; font-weight: 600; color: var(--color-dark);">{item.data.price}</p>}
+      {categories.map((cat) => {
+        const items = grouped[cat] || [];
+        if (items.length === 0) return null;
+        return (
+          <div style="margin-bottom: 3rem;">
+            <h2 style="font-size: 1.5rem; color: var(--color-accent); border-bottom: 2px solid var(--color-accent); padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+              {categoryLabels[cat] || cat}
+            </h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.25rem;">
+              {items.map((item) => (
+                <div style="background: #fff; border: 1px solid var(--color-border); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s;">
+                  <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;">
+                    <h3 style="font-size: 1.1rem; color: var(--color-accent); margin: 0;">{item.data.title}</h3>
+                    {item.data.price && <span style="font-weight: 700; color: var(--color-dark); white-space: nowrap; font-size: 1.05rem;">{item.data.price}</span>}
+                  </div>
+                  {item.data.description && <p style="color: var(--color-muted); font-size: 0.9rem; margin-top: 0.5rem;">{item.data.description}</p>}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      ) : (
-        <div style="text-align: center; padding: 3rem; background: var(--color-surface); border-radius: 8px;">
-          <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--color-accent);">Unsere Spezialitäten</h3>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; text-align: left;">
-
-            <div>
-              <h4 style="font-size: 1.1rem; margin-bottom: 1rem; border-bottom: 2px solid var(--color-accent); padding-bottom: 0.5rem;">Antipasti</h4>
-              <div style="margin-bottom: 1rem;">
-                <p style="font-weight: 600;">Bruschetta Calabrese</p>
-                <p style="font-size: 0.9rem; color: var(--color-muted);">Weißbrot mit Tomaten, Rucola, Parmesan</p>
-                <p style="font-size: 0.95rem; font-weight: 600; margin-top: 0.2rem;">€9,00</p>
-              </div>
-              <div style="margin-bottom: 1rem;">
-                <p style="font-weight: 600;">Carpaccio di Tonno</p>
-                <p style="font-size: 0.9rem; color: var(--color-muted);">Thunfisch Carpaccio</p>
-                <p style="font-size: 0.95rem; font-weight: 600; margin-top: 0.2rem;">€19,00</p>
-              </div>
-              <div style="margin-bottom: 1rem;">
-                <p style="font-weight: 600;">Bruschetta con Gamberi</p>
-                <p style="font-size: 0.9rem; color: var(--color-muted);">Weißbrot mit Olivenpesto, Gambas, Kirschtomaten</p>
-                <p style="font-size: 0.95rem; font-weight: 600; margin-top: 0.2rem;">€16,00</p>
-              </div>
-            </div>
-
-            <div>
-              <h4 style="font-size: 1.1rem; margin-bottom: 1rem; border-bottom: 2px solid var(--color-accent); padding-bottom: 0.5rem;">Pizza</h4>
-              <div style="margin-bottom: 1rem;">
-                <p style="font-weight: 600;">Pizza Leonardo da Vinci</p>
-                <p style="font-size: 0.9rem; color: var(--color-muted);">Lachs, Thunfisch, Artischocken und Knoblauch</p>
-                <p style="font-size: 0.95rem; font-weight: 600; margin-top: 0.2rem;">€18,00</p>
-              </div>
-              <div style="margin-bottom: 1rem;">
-                <p style="font-weight: 600;">Pizza Frutti di Mare</p>
-                <p style="font-size: 0.9rem; color: var(--color-muted);">Meeresfrüchte</p>
-                <p style="font-size: 0.95rem; font-weight: 600; margin-top: 0.2rem;">€18,00</p>
-              </div>
-              <div style="margin-bottom: 1rem;">
-                <p style="font-weight: 600;">Pizza Burrata</p>
-                <p style="font-size: 0.9rem; color: var(--color-muted);">Mit Burrata, Kirschtomaten und Rucola</p>
-                <p style="font-size: 0.95rem; font-weight: 600; margin-top: 0.2rem;">€16,50</p>
-              </div>
-              <div style="margin-bottom: 1rem;">
-                <p style="font-weight: 600;">Pizza Schwarzwald</p>
-                <p style="font-size: 0.9rem; color: var(--color-muted);">Pfifferlinge, Zwiebeln, Speck</p>
-                <p style="font-size: 0.95rem; font-weight: 600; margin-top: 0.2rem;">€15,00</p>
-              </div>
-            </div>
-
-            <div>
-              <h4 style="font-size: 1.1rem; margin-bottom: 1rem; border-bottom: 2px solid var(--color-accent); padding-bottom: 0.5rem;">Secondi Piatti</h4>
-              <div style="margin-bottom: 1rem;">
-                <p style="font-weight: 600;">Bistecca alla Pizzaiola</p>
-                <p style="font-size: 0.9rem; color: var(--color-muted);">Argentinisches Rumpsteak, Oliven, Kapern, in Tomatensauce</p>
-                <p style="font-size: 0.95rem; font-weight: 600; margin-top: 0.2rem;">€30,00</p>
-              </div>
-              <div style="margin-bottom: 1rem;">
-                <p style="font-weight: 600;">Filetto al Tartufo</p>
-                <p style="font-size: 0.9rem; color: var(--color-muted);">Argentinisches Rinderfilet mit Trüffelcremesauce</p>
-                <p style="font-size: 0.95rem; font-weight: 600; margin-top: 0.2rem;">€36,00</p>
-              </div>
-              <div style="margin-bottom: 1rem;">
-                <p style="font-weight: 600;">Gamberi alla Griglia</p>
-                <p style="font-size: 0.9rem; color: var(--color-muted);">Gegrillte Riesengarnelen</p>
-                <p style="font-size: 0.95rem; font-weight: 600; margin-top: 0.2rem;">€33,00</p>
-              </div>
-              <div style="margin-bottom: 1rem;">
-                <p style="font-weight: 600;">Filetto di Branzino alla Romana</p>
-                <p style="font-size: 0.9rem; color: var(--color-muted);">Wolfsbarschfilet mit Parmaschinken und Salbei</p>
-                <p style="font-size: 0.95rem; font-weight: 600; margin-top: 0.2rem;">€31,00</p>
-              </div>
-            </div>
-
           </div>
-        </div>
-      )}
+        );
+      })}
     </div>
   </section>
 </Base>
