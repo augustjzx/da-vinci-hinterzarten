@@ -1,0 +1,273 @@
+---
+import { getMenu } from "dineway";
+import { DinewayHead, DinewayBodyStart, DinewayBodyEnd } from "dineway/ui";
+import { createPublicPageContext } from "dineway/page";
+import LiveSearch from "dineway/ui/search";
+
+interface Props {
+  title: string;
+  description?: string | null;
+  image?: string | null;
+  content?: { collection: string; id: string; slug?: string | null };
+}
+
+const {
+  title,
+  description,
+  image,
+  content,
+} = Astro.props;
+const primaryMenu = await getMenu("primary");
+
+const pageCtx = createPublicPageContext({
+  Astro,
+  kind: content ? "content" : "custom",
+  pageType: "website",
+  title,
+  description,
+  image,
+  content,
+});
+
+const siteOrigin = Astro.site?.origin ?? "http://localhost:4321";
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  name: "Ristorante Leonardo da Vinci",
+  image: `${siteOrigin}/assets/da-vinci-hinterzarten/selected/gallery-2.jpg`,
+  url: siteOrigin,
+  telephone: "+497652982382",
+  email: "info@ristorante-leonardo-da-vinci.de",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Rathausstraße 1",
+    addressLocality: "Hinterzarten",
+    postalCode: "79856",
+    addressCountry: "DE",
+  },
+  servesCuisine: ["Italian", "Pizza", "Mediterranean"],
+  priceRange: "€€",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.5",
+    reviewCount: "421",
+    bestRating: "5",
+  },
+  acceptsReservations: true,
+  paymentAccepted: ["Cash", "Mastercard", "VISA", "Maestro", "EC Card"],
+  hasMenu: `${siteOrigin}/menu`,
+  sameAs: [
+    "https://www.facebook.com/Ristorante-Pizzeria-Leonardo-Da-Vinci.de",
+    "https://www.instagram.com/Il_leonardo_da_vinci",
+  ],
+};
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+    <DinewayHead page={pageCtx} />
+    <script set:html={JSON.stringify(jsonLd)} type="application/ld+json" />
+    <style is:global>
+      :root {
+        --color-bg: #faf8f5;
+        --color-text: #1a1a1a;
+        --color-accent: #c4956a;
+        --color-accent-dark: #a67c52;
+        --color-gold: #d4a853;
+        --color-dark: #2c2420;
+        --color-muted: #6b6b6b;
+        --color-border: #e8e0d8;
+        --color-surface: #f5f0eb;
+        --font-display: "Cormorant Garamond", serif;
+        --font-body: "Source Sans 3", sans-serif;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: var(--font-body);
+        color: var(--color-text);
+        background: var(--color-bg);
+        line-height: 1.6;
+      }
+      h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 600; }
+      a { color: var(--color-accent); text-decoration: none; transition: color 0.2s; }
+      a:hover { color: var(--color-accent-dark); }
+      img { max-width: 100%; height: auto; }
+      .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+      .page-header {
+        background: var(--color-dark);
+        color: #fff;
+        padding: 4rem 0;
+        text-align: center;
+      }
+      .page-header h1 {
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+      .page-header p {
+        color: var(--color-gold);
+        font-size: 1.1rem;
+        margin-top: 0.5rem;
+        font-family: var(--font-display);
+        font-style: italic;
+      }
+      .nav-bar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(44, 36, 32, 0.97);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .nav-logo {
+        font-family: var(--font-display);
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #fff;
+        letter-spacing: 0.03em;
+      }
+      .nav-logo span { color: var(--color-gold); }
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        align-items: center;
+      }
+      .nav-links a {
+        color: rgba(255,255,255,0.8);
+        font-size: 0.9rem;
+        font-weight: 400;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover { color: var(--color-gold); }
+      .nav-links .active { color: var(--color-gold); }
+      .footer {
+        background: var(--color-dark);
+        color: rgba(255,255,255,0.7);
+        padding: 3rem 0;
+        margin-top: 4rem;
+      }
+      .footer-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 2rem;
+      }
+      .footer h4 {
+        font-family: var(--font-display);
+        color: var(--color-gold);
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+      }
+      .footer a { color: rgba(255,255,255,0.6); display: block; margin-bottom: 0.4rem; }
+      .footer a:hover { color: var(--color-gold); }
+      .footer p { margin-bottom: 0.3rem; font-size: 0.9rem; }
+      .footer-bottom {
+        text-align: center;
+        padding-top: 2rem;
+        margin-top: 2rem;
+        border-top: 1px solid rgba(255,255,255,0.08);
+        font-size: 0.85rem;
+        color: rgba(255,255,255,0.4);
+      }
+      .btn {
+        display: inline-block;
+        padding: 0.75rem 2rem;
+        background: var(--color-accent);
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-family: var(--font-body);
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .btn:hover { background: var(--color-accent-dark); color: #fff; }
+      .btn-outline {
+        background: transparent;
+        border: 1px solid var(--color-accent);
+        color: var(--color-accent);
+      }
+      .btn-outline:hover { background: var(--color-accent); color: #fff; }
+      @media (max-width: 768px) {
+        .nav-links { gap: 1rem; }
+        .nav-links a { font-size: 0.8rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <DinewayBodyStart page={pageCtx} />
+    <nav class="nav-bar">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo">Leonardo <span>da Vinci</span></a>
+        <ul class="nav-links">
+          <li><a href="/" class={Astro.url.pathname === "/" ? "active" : ""}>Home</a></li>
+          <li><a href="/menu" class={Astro.url.pathname.startsWith("/menu") ? "active" : ""}>Menu</a></li>
+          <li><a href="/reviews" class={Astro.url.pathname.startsWith("/reviews") ? "active" : ""}>Reviews</a></li>
+          <li><a href="/gallery" class={Astro.url.pathname.startsWith("/gallery") ? "active" : ""}>Gallery</a></li>
+          <li><a href="/blog" class={Astro.url.pathname.startsWith("/blog") ? "active" : ""}>Blog</a></li>
+          <li><a href="/news" class={Astro.url.pathname.startsWith("/news") ? "active" : ""}>News</a></li>
+          <li><a href="/contact" class={Astro.url.pathname.startsWith("/contact") ? "active" : ""}>Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+      <slot />
+    </main>
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>
+          <h4>Ristorante Leonardo da Vinci</h4>
+          <p>Rathausstraße 1</p>
+          <p>79856 Hinterzarten</p>
+          <p>Germany</p>
+          <p style="margin-top: 0.5rem;"><a href="tel:+497652982382">+49 7652 982382</a></p>
+          <p><a href="mailto:info@ristorante-leonardo-da-vinci.de">info@ristorante-leonardo-da-vinci.de</a></p>
+        </div>
+        <div>
+          <h4>Navigation</h4>
+          <a href="/">Home</a>
+          <a href="/menu">Menu</a>
+          <a href="/reviews">Reviews</a>
+          <a href="/gallery">Gallery</a>
+          <a href="/blog">Blog</a>
+          <a href="/news">News</a>
+          <a href="/contact">Contact</a>
+        </div>
+        <div>
+          <h4>Folgen Sie uns</h4>
+          <a href="https://www.facebook.com/Ristorante-Pizzeria-Leonardo-Da-Vinci.de" target="_blank">Facebook</a>
+          <a href="https://www.instagram.com/Il_leonardo_da_vinci" target="_blank">Instagram</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; {new Date().getFullYear()} Ristorante Leonardo da Vinci. All rights reserved.
+      </div>
+    </footer>
+    <DinewayBodyEnd page={pageCtx} />
+  </body>
+</html>

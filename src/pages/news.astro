@@ -1,0 +1,40 @@
+---
+import { getDinewayCollection } from "dineway";
+import Base from "../layouts/Base.astro";
+
+const { entries: newsItems, cacheHint } = await getDinewayCollection("news", {
+  status: "published",
+  orderBy: { published_at: "desc" },
+});
+Astro.cache.set(cacheHint);
+---
+
+<Base title="News – Ristorante Leonardo da Vinci Hinterzarten" description="Stay updated with the latest news from Ristorante Leonardo da Vinci in Hinterzarten. Seasonal specials, events, and announcements.">
+  <div class="page-header">
+    <div class="container">
+      <h1>News</h1>
+      <p>Neuigkeiten & Aktuelles</p>
+    </div>
+  </div>
+
+  <section style="padding: 4rem 0;">
+    <div class="container">
+      {newsItems.length > 0 ? (
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem;">
+          {newsItems.map(item => (
+            <article style="background: #fff; border: 1px solid var(--color-border); border-radius: 8px; padding: 1.5rem;">
+              <h2 style="font-size: 1.2rem; margin-bottom: 0.5rem;"><a href={`/news/${item.id}`}>{item.data.title}</a></h2>
+              {item.data.excerpt && <p style="color: var(--color-muted); font-size: 0.95rem;">{item.data.excerpt}</p>}
+              {item.data.publishedAt && <p style="font-size: 0.85rem; color: var(--color-accent); margin-top: 0.75rem;">{item.data.publishedAt.toLocaleDateString("de-DE")}</p>}
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div style="text-align: center; padding: 3rem; background: var(--color-surface); border-radius: 8px;">
+          <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--color-accent);">Aktuelle Neuigkeiten</h3>
+          <p style="color: var(--color-muted); max-width: 500px; margin: 0 auto;">Bleiben Sie informiert über saisonale Spezialitäten, Events und besondere Angebote bei Leonardo da Vinci.</p>
+        </div>
+      )}
+    </div>
+  </section>
+</Base>

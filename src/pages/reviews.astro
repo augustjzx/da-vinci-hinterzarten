@@ -1,0 +1,71 @@
+---
+import { getDinewayCollection } from "dineway";
+import Base from "../layouts/Base.astro";
+
+const { entries: reviews, cacheHint } = await getDinewayCollection("reviews", {
+  status: "published",
+  orderBy: { title: "desc" },
+});
+Astro.cache.set(cacheHint);
+---
+
+<Base title="Reviews – Ristorante Leonardo da Vinci Hinterzarten" description="Read what guests say about Ristorante Leonardo da Vinci in Hinterzarten. 4.5 stars on Google, #1 on TripAdvisor. Authentic Italian cuisine loved by locals and visitors.">
+  <div class="page-header">
+    <div class="container">
+      <h1>Gästebewertungen</h1>
+      <p>Das sagen unsere Gäste über uns</p>
+    </div>
+  </div>
+
+  <section style="padding: 4rem 0;">
+    <div class="container">
+      <div style="display: flex; gap: 2rem; justify-content: center; margin-bottom: 3rem; flex-wrap: wrap;">
+        <div style="text-align: center; padding: 2rem; background: #fff; border: 1px solid var(--color-border); border-radius: 8px; min-width: 180px;">
+          <div style="font-size: 2.5rem; font-family: var(--font-display); color: var(--color-accent); font-weight: 700;">4.5</div>
+          <div style="color: var(--color-gold); font-size: 1.2rem;">★★★★★</div>
+          <p style="font-size: 0.9rem; color: var(--color-muted); margin-top: 0.3rem;">Google</p>
+        </div>
+        <div style="text-align: center; padding: 2rem; background: #fff; border: 1px solid var(--color-border); border-radius: 8px; min-width: 180px;">
+          <div style="font-size: 2.5rem; font-family: var(--font-display); color: var(--color-accent); font-weight: 700;">4.3</div>
+          <div style="color: var(--color-gold); font-size: 1.2rem;">★★★★</div>
+          <p style="font-size: 0.9rem; color: var(--color-muted); margin-top: 0.3rem;">TripAdvisor</p>
+        </div>
+      </div>
+
+      {reviews.length > 0 ? (
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem;">
+          {reviews.map(review => (
+            <div style="background: #fff; border: 1px solid var(--color-border); border-radius: 8px; padding: 1.5rem;">
+              <div style="color: var(--color-gold); margin-bottom: 0.5rem;">★★★★★</div>
+              <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">{review.data.title}</h3>
+              <p style="color: var(--color-muted); font-size: 0.95rem; font-style: italic;">"{review.data.content?.[0]?.children?.[0]?.text || ''}"</p>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem;">
+          <div style="background: #fff; border: 1px solid var(--color-border); border-radius: 8px; padding: 1.5rem;">
+            <div style="color: var(--color-gold); margin-bottom: 0.5rem;">★★★★★</div>
+            <p style="color: var(--color-muted); font-size: 0.95rem; font-style: italic;">"Great authentic Italian food! The staff was very nice. Gluten free pizza and pasta available. Great desserts too."</p>
+            <p style="margin-top: 0.75rem; font-size: 0.85rem;"><strong>Cortney M.</strong> &middot; Google</p>
+          </div>
+          <div style="background: #fff; border: 1px solid var(--color-border); border-radius: 8px; padding: 1.5rem;">
+            <div style="color: var(--color-gold); margin-bottom: 0.5rem;">★★★★★</div>
+            <p style="color: var(--color-muted); font-size: 0.95rem; font-style: italic;">"Very nice authentic Italian food. The pizzas were very nice. The prices were not exorbitant. Try this Italian. You won't be disappointed."</p>
+            <p style="margin-top: 0.75rem; font-size: 0.85rem;"><strong>G R.</strong> &middot; Google</p>
+          </div>
+          <div style="background: #fff; border: 1px solid var(--color-border); border-radius: 8px; padding: 1.5rem;">
+            <div style="color: var(--color-gold); margin-bottom: 0.5rem;">★★★★★</div>
+            <p style="color: var(--color-muted); font-size: 0.95rem; font-style: italic;">"Best ever!!! We enjoyed our lunch. The food is great & tasty & unique. The crew is lovely. I recommended this restaurant very much."</p>
+            <p style="margin-top: 0.75rem; font-size: 0.85rem;"><strong>Galit S.</strong> &middot; Google</p>
+          </div>
+          <div style="background: #fff; border: 1px solid var(--color-border); border-radius: 8px; padding: 1.5rem;">
+            <div style="color: var(--color-gold); margin-bottom: 0.5rem;">★★★★★</div>
+            <p style="color: var(--color-muted); font-size: 0.95rem; font-style: italic;">"Authentic Italian food. A family meal to remember. The young man who served us was matter of fact which we really liked. No major drama. We went for food and that's what was served."</p>
+            <p style="margin-top: 0.75rem; font-size: 0.85rem;"><strong>Guest</strong> &middot; Google</p>
+          </div>
+        </div>
+      )}
+    </div>
+  </section>
+</Base>

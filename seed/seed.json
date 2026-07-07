@@ -1,0 +1,357 @@
+{
+  "$schema": "https://dineway.foodism.ai/seed.schema.json",
+  "version": "1",
+  "meta": {
+    "name": "Ristorante Leonardo da Vinci",
+    "description": "Authentic Italian restaurant in Hinterzarten, Black Forest",
+    "author": "Giulio Marcucci"
+  },
+  "settings": {
+    "title": "Ristorante Leonardo da Vinci",
+    "tagline": "Authentic Italian Cuisine im Schwarzwald"
+  },
+  "collections": [
+    {
+      "slug": "blog",
+      "label": "Blog Posts",
+      "labelSingular": "Blog Post",
+      "urlPattern": "/blog/{slug}",
+      "supports": ["drafts", "revisions", "search", "seo"],
+      "fields": [
+        { "slug": "title", "label": "Title", "type": "string", "required": true, "searchable": true },
+        { "slug": "featured_image", "label": "Featured Image", "type": "image" },
+        { "slug": "content", "label": "Content", "type": "portableText", "searchable": true },
+        { "slug": "excerpt", "label": "Excerpt", "type": "text" }
+      ]
+    },
+    {
+      "slug": "news",
+      "label": "News",
+      "labelSingular": "News",
+      "urlPattern": "/news/{slug}",
+      "supports": ["drafts", "revisions", "search", "seo"],
+      "fields": [
+        { "slug": "title", "label": "Title", "type": "string", "required": true, "searchable": true },
+        { "slug": "featured_image", "label": "Featured Image", "type": "image" },
+        { "slug": "content", "label": "Content", "type": "portableText", "searchable": true },
+        { "slug": "excerpt", "label": "Excerpt", "type": "text" }
+      ]
+    },
+    {
+      "slug": "menu",
+      "label": "Menu Items",
+      "labelSingular": "Menu Item",
+      "urlPattern": "/menu/{slug}",
+      "supports": ["drafts", "revisions", "search", "seo"],
+      "fields": [
+        { "slug": "title", "label": "Title", "type": "string", "required": true, "searchable": true },
+        { "slug": "description", "label": "Description", "type": "text", "searchable": true },
+        { "slug": "price", "label": "Price", "type": "string" },
+        { "slug": "category", "label": "Category", "type": "string" },
+        { "slug": "image", "label": "Image", "type": "image" }
+      ]
+    },
+    {
+      "slug": "reviews",
+      "label": "Reviews",
+      "labelSingular": "Review",
+      "urlPattern": "/reviews/{slug}",
+      "supports": ["drafts", "revisions", "search", "seo"],
+      "fields": [
+        { "slug": "title", "label": "Title", "type": "string", "required": true, "searchable": true },
+        { "slug": "content", "label": "Content", "type": "portableText", "searchable": true },
+        { "slug": "rating", "label": "Rating", "type": "integer" },
+        { "slug": "author", "label": "Author", "type": "string" },
+        { "slug": "image", "label": "Image", "type": "image" }
+      ]
+    },
+    {
+      "slug": "gallery",
+      "label": "Gallery",
+      "labelSingular": "Gallery Item",
+      "urlPattern": "/gallery/{slug}",
+      "supports": ["drafts", "revisions", "search", "seo"],
+      "fields": [
+        { "slug": "title", "label": "Title", "type": "string" },
+        { "slug": "image", "label": "Image", "type": "image", "required": true },
+        { "slug": "caption", "label": "Caption", "type": "text" }
+      ]
+    }
+  ],
+  "menus": [
+    {
+      "name": "primary",
+      "label": "Primary Navigation",
+      "items": [
+        { "type": "custom", "label": "Home", "url": "/" },
+        { "type": "custom", "label": "Menu", "url": "/menu" },
+        { "type": "custom", "label": "Reviews", "url": "/reviews" },
+        { "type": "custom", "label": "Gallery", "url": "/gallery" },
+        { "type": "custom", "label": "Blog", "url": "/blog" },
+        { "type": "custom", "label": "News", "url": "/news" },
+        { "type": "custom", "label": "Contact", "url": "/contact" }
+      ]
+    }
+  ],
+  "bylines": [
+    {
+      "id": "byline-editorial",
+      "slug": "leonardo-da-vinci",
+      "displayName": "Ristorante Leonardo da Vinci"
+    }
+  ],
+  "content": {
+    "blog": [
+      {
+        "id": "blog-tradition-italian-cuisine",
+        "slug": "tradition-of-italian-cuisine",
+        "status": "published",
+        "data": {
+          "title": "Die Tradition der italienischen Küche im Schwarzwald",
+          "excerpt": "Seit Generationen bringen wir die Aromen Italiens in den Schwarzwald. Entdecken Sie die Geschichte unseres Familienrestaurants.",
+          "content": [
+            { "_type": "block", "style": "normal", "children": [{ "_type": "span", "text": "Unsere Reise begann in der sonnigen Region Apuliens, wo die Familie Marcucci seit Generationen die Kunst der italienischen Küche pflegt. Heute teilen wir diese Leidenschaft mit unseren Gästen in Hinterzarten." }] },
+            { "_type": "block", "style": "normal", "children": [{ "_type": "span", "text": "Jedes Gericht auf unserer Speisekarte erzählt eine Geschichte – von der Holzofen-Pizza mit knusprigem Boden bis zur hausgemachten Pasta, die nach traditionellen Familienrezepten zubereitet wird." }] },
+            { "_type": "block", "style": "normal", "children": [{ "_type": "span", "text": "Was unsere Küche besonders macht, ist die Kombination aus authentischen italienischen Rezepten und den frischen Zutaten aus der Region. Unsere Gäste schätzen diese Verbindung von italienischer Tradition und Schwarzwälder Gastfreundschaft." }] }
+          ]
+        },
+        "bylines": [{ "byline": "byline-editorial" }]
+      },
+      {
+        "id": "blog-wood-fired-pizza",
+        "slug": "art-of-wood-fired-pizza",
+        "status": "published",
+        "data": {
+          "title": "Die Kunst der Holzofen-Pizza",
+          "excerpt": "Was macht eine perfekte Pizza aus? Bei uns beginnt es mit dem Holzofen und endet mit den frischesten Zutaten.",
+          "content": [
+            { "_type": "block", "style": "normal", "children": [{ "_type": "span", "text": "Eine authentische italienische Pizza lebt von drei Dingen: dem Teig, dem Ofen und den Zutaten. Bei uns im Ristorante Leonardo da Vinci wird jede Pizza mit Sorgfalt zubereitet." }] },
+            { "_type": "block", "style": "normal", "children": [{ "_type": "span", "text": "Unser Holzofen verleiht jeder Pizza das unverwechselbare Aroma, das nur durch die perfekte Hitze und den Rauch entsteht. Von der klassischen Margherita bis zur kreativen Pizza Burrata mit Kirschtomaten und Rucola." }] },
+            { "_type": "block", "style": "normal", "children": [{ "_type": "span", "text": "Besonders stolz sind wir auf unsere glutenfreien Pizzen, die bei unseren Gästen grossen Anklang finden – ganz ohne Kompromisse beim Geschmack." }] }
+          ]
+        },
+        "bylines": [{ "byline": "byline-editorial" }]
+      },
+      {
+        "id": "blog-vegetarian-delights",
+        "slug": "vegetarian-delights",
+        "status": "published",
+        "data": {
+          "title": "Vegetarische Genüsse: Mehr als nur Beilage",
+          "excerpt": "Unsere vegetarischen Gerichte sind alles andere als langweilig. Entdecken Sie die Vielfalt der italienischen Gemüseküche.",
+          "content": [
+            { "_type": "block", "style": "normal", "children": [{ "_type": "span", "text": "Die italienische Küche ist reich an vegetarischen Schätzen. Von der Bruschetta Calabrese mit Tomaten, Rucola und Parmesan bis zur Insalata con Verdure e Ricotta." }] },
+            { "_type": "block", "style": "normal", "children": [{ "_type": "span", "text": "Unsere Gäste schätzen die Vielfalt unseres vegetarischen Angebots, das weit über die klassische Margherita hinausgeht. Probieren Sie unsere Pizza alle Verdure Grigliate mit gegrilltem Gemüse." }] },
+            { "_type": "block", "style": "normal", "children": [{ "_type": "span", "text": "Auch für vegane und glutenfreie Ernährung haben wir passende Optionen – sprechen Sie unser Team einfach an." }] }
+          ]
+        },
+        "bylines": [{ "byline": "byline-editorial" }]
+      }
+    ],
+    "news": [
+      {
+        "id": "news-seasonal-specials",
+        "slug": "seasonal-specials-summer",
+        "status": "published",
+        "data": {
+          "title": "Saisonale Sommer-Spezialitäten",
+          "excerpt": "Geniessen Sie unsere neuen Sommergerichte mit frischen Kräutern und leichten Aromen."
+        },
+        "bylines": [{ "byline": "byline-editorial" }]
+      },
+      {
+        "id": "news-takeaway-service",
+        "slug": "takeaway-now-available",
+        "status": "published",
+        "data": {
+          "title": "Takeaway-Service – Italienisch geniessen zu Hause",
+          "excerpt": "Sie möchten unsere italienischen Spezialitäten zu Hause geniessen? Unser Takeaway-Service steht bereit."
+        },
+        "bylines": [{ "byline": "byline-editorial" }]
+      },
+      {
+        "id": "news-outdoor-seating",
+        "slug": "outdoor-seating-summer",
+        "status": "published",
+        "data": {
+          "title": "Sommerzeit – Geniessen Sie unsere Aussenbestuhlung",
+          "excerpt": "Bei schönem Wetter servieren wir Ihnen Ihre Lieblingsgerichte auf unserer sonnigen Terrasse."
+        },
+        "bylines": [{ "byline": "byline-editorial" }]
+      }
+    ],
+    "menu": [
+      {
+        "id": "menu-bruschetta-calabrese",
+        "slug": "bruschetta-calabrese",
+        "status": "published",
+        "data": {
+          "title": "Bruschetta Calabrese",
+          "description": "Weißbrot mit Tomaten, Rucola, Parmesan",
+          "price": "€9,00",
+          "category": "Antipasti"
+        }
+      },
+      {
+        "id": "menu-carpaccio-di-tonno",
+        "slug": "carpaccio-di-tonno",
+        "status": "published",
+        "data": {
+          "title": "Carpaccio di Tonno",
+          "description": "Thunfisch Carpaccio",
+          "price": "€19,00",
+          "category": "Antipasti"
+        }
+      },
+      {
+        "id": "menu-pizza-leonardo",
+        "slug": "pizza-leonardo-da-vinci",
+        "status": "published",
+        "data": {
+          "title": "Pizza Leonardo da Vinci",
+          "description": "Lachs, Thunfisch, Artischocken und Knoblauch",
+          "price": "€18,00",
+          "category": "Pizza"
+        }
+      },
+      {
+        "id": "menu-pizza-burrata",
+        "slug": "pizza-burrata",
+        "status": "published",
+        "data": {
+          "title": "Pizza Burrata",
+          "description": "Mit Burrata, Kirschtomaten und Rucola",
+          "price": "€16,50",
+          "category": "Pizza"
+        }
+      },
+      {
+        "id": "menu-pizza-schwarzwald",
+        "slug": "pizza-schwarzwald",
+        "status": "published",
+        "data": {
+          "title": "Pizza Schwarzwald",
+          "description": "Pfifferlinge, Zwiebeln, Speck",
+          "price": "€15,00",
+          "category": "Pizza"
+        }
+      },
+      {
+        "id": "menu-bistecca-pizzaiola",
+        "slug": "bistecca-pizzaiola",
+        "status": "published",
+        "data": {
+          "title": "Bistecca alla Pizzaiola",
+          "description": "Argentinisches Rumpsteak, Oliven, Kapern, in Tomatensauce",
+          "price": "€30,00",
+          "category": "Secondi Piatti"
+        }
+      },
+      {
+        "id": "menu-filetto-tartufo",
+        "slug": "filetto-al-tartufo",
+        "status": "published",
+        "data": {
+          "title": "Filetto al Tartufo",
+          "description": "Argentinisches Rinderfilet mit Trüffelcremesauce",
+          "price": "€36,00",
+          "category": "Secondi Piatti"
+        }
+      },
+      {
+        "id": "menu-gamberi-griglia",
+        "slug": "gamberi-alla-griglia",
+        "status": "published",
+        "data": {
+          "title": "Gamberi alla Griglia",
+          "description": "Gegrillte Riesengarnelen",
+          "price": "€33,00",
+          "category": "Secondi Piatti"
+        }
+      }
+    ],
+    "reviews": [
+      {
+        "id": "review-cortney",
+        "slug": "cortney-gf-pizza",
+        "status": "published",
+        "data": {
+          "title": "Great authentic Italian food",
+          "content": [
+            { "_type": "block", "style": "normal", "children": [{ "_type": "span", "text": "Great authentic Italian food! The staff was very nice. Gluten free pizza and pasta available. Personally had the GF pizza and it was delicious. Great desserts too." }] }
+          ],
+          "rating": 5,
+          "author": "Cortney M."
+        }
+      },
+      {
+        "id": "review-gr",
+        "slug": "gr-family-meal",
+        "status": "published",
+        "data": {
+          "title": "Authentic Italian family meal",
+          "content": [
+            { "_type": "block", "style": "normal", "children": [{ "_type": "span", "text": "Very nice authentic Italian food. We went there for a family meal. The pizzas were very nice. Try this Italian in Hinterzarten. You won't be disappointed." }] }
+          ],
+          "rating": 5,
+          "author": "G R."
+        }
+      },
+      {
+        "id": "review-galit",
+        "slug": "galit-best-ever",
+        "status": "published",
+        "data": {
+          "title": "Best ever!",
+          "content": [
+            { "_type": "block", "style": "normal", "children": [{ "_type": "span", "text": "Best ever!!! We enjoyed our lunch. The food is great & tasty & unique. The crew is lovely. I recommended this restaurant very much." }] }
+          ],
+          "rating": 5,
+          "author": "Galit S."
+        }
+      },
+      {
+        "id": "review-family",
+        "slug": "authentic-family-dining",
+        "status": "published",
+        "data": {
+          "title": "Family dining at its best",
+          "content": [
+            { "_type": "block", "style": "normal", "children": [{ "_type": "span", "text": "Very nice authentic Italian food. The young man who served us was matter of fact which we really liked. We went for food and that's what was served. No more, no less." }] }
+          ],
+          "rating": 5,
+          "author": "Family Guest"
+        }
+      }
+    ],
+    "gallery": [
+      {
+        "id": "gallery-pizza-1",
+        "slug": "wood-fired-pizza",
+        "status": "published",
+        "data": {
+          "title": "Holzofen-Pizza",
+          "caption": "Unsere handgemachte Pizza aus dem Holzofen"
+        }
+      },
+      {
+        "id": "gallery-interior-1",
+        "slug": "restaurant-interior",
+        "status": "published",
+        "data": {
+          "title": "Unser Restaurant",
+          "caption": "Gemütliche Atmosphäre im Ristorante Leonardo da Vinci"
+        }
+      },
+      {
+        "id": "gallery-pasta-1",
+        "slug": "homemade-pasta",
+        "status": "published",
+        "data": {
+          "title": "Hausgemachte Pasta",
+          "caption": "Frische Pasta nach traditionellem Familienrezept"
+        }
+      }
+    ]
+  }
+}

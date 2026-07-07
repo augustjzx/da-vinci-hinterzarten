@@ -1,0 +1,40 @@
+---
+import { getDinewayCollection } from "dineway";
+import Base from "../layouts/Base.astro";
+
+const { entries: posts, cacheHint } = await getDinewayCollection("blog", {
+  status: "published",
+  orderBy: { published_at: "desc" },
+});
+Astro.cache.set(cacheHint);
+---
+
+<Base title="Blog – Ristorante Leonardo da Vinci Hinterzarten" description="Read our blog at Ristorante Leonardo da Vinci in Hinterzarten. Discover Italian culinary traditions, Black Forest dining tips, and stories from our kitchen.">
+  <div class="page-header">
+    <div class="container">
+      <h1>Blog</h1>
+      <p>Geschichten aus unserer Küche</p>
+    </div>
+  </div>
+
+  <section style="padding: 4rem 0;">
+    <div class="container">
+      {posts.length > 0 ? (
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem;">
+          {posts.map(post => (
+            <article style="background: #fff; border: 1px solid var(--color-border); border-radius: 8px; padding: 1.5rem; transition: box-shadow 0.2s;">
+              <h2 style="font-size: 1.2rem; margin-bottom: 0.5rem;"><a href={`/blog/${post.id}`}>{post.data.title}</a></h2>
+              {post.data.excerpt && <p style="color: var(--color-muted); font-size: 0.95rem;">{post.data.excerpt}</p>}
+              {post.data.publishedAt && <p style="font-size: 0.85rem; color: var(--color-muted); margin-top: 0.75rem;">{post.data.publishedAt.toLocaleDateString("de-DE")}</p>}
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div style="text-align: center; padding: 3rem; background: var(--color-surface); border-radius: 8px;">
+          <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--color-accent);">Willkommen in unserem Blog</h3>
+          <p style="color: var(--color-muted); max-width: 500px; margin: 0 auto;">Entdecken Sie die Geschichten hinter unseren Gerichten, traditionelle italienische Rezepte und die Leidenschaft, die in jeder unserer Spezialitäten steckt.</p>
+        </div>
+      )}
+    </div>
+  </section>
+</Base>

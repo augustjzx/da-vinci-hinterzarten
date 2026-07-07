@@ -1,0 +1,26 @@
+{
+  "name": "da-vinci-hinterzarten",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "seed": "npx dineway seed seed/seed.json",
+    "start": "node dist/server/entry.mjs"
+  },
+  "dependencies": {
+    "@astrojs/node": "^10.1.0",
+    "@astrojs/react": "^5.0.0",
+    "@dineway-ai/plugin-seo-graph": "^0.1.0",
+    "astro": "^6.3.0",
+    "dineway": "^0.1.48",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "localtunnel": "^2.0.2"
+  }
+}

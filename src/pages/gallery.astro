@@ -1,0 +1,57 @@
+---
+import { getDinewayCollection } from "dineway";
+import Base from "../layouts/Base.astro";
+
+const { entries: galleryItems, cacheHint } = await getDinewayCollection("gallery", {
+  status: "published",
+});
+Astro.cache.set(cacheHint);
+
+const MEDIA_URLS = {
+  "01KWW4M0MJWZS5VCDYEY72D8JM": "/_dineway/api/media/file/01KWW4M0G3EQ6VD8TZK09BQD6P.jpg",
+  "01KWW4M08KPW3XP4T5PA9DPB2W": "/_dineway/api/media/file/01KWW4M04CP7P287ZVJ8G4C9CJ.jpg",
+  "01KWW4KZVW0Z0X032B0TE5RWXD": "/_dineway/api/media/file/01KWW4KZR57GDWWRZPGM8T0TZS.jpg",
+  "01KWW4KZJ6N2A8FHT1YE4J1FNF": "/_dineway/api/media/file/01KWW4KZCGZ9QXSC3DP4MQSPKJ.jpg",
+  "01KWW4KZ557QGB9G7ZX203FTWC": "/_dineway/api/media/file/01KWW4KZ1TAND1TFHBF3S1E1T2.jpg",
+  "01KWW4KYVVVDGXQ57W7HVGAWS6": "/_dineway/api/media/file/01KWW4KYP6JVAFHV5HDMRGWWDE.jpg",
+  "01KWW4KYDWR99AHVPHCBW9XNW9": "/_dineway/api/media/file/01KWW4KYAGWA06VAHQA0AAT93Y.jpg",
+  "01KWW4KY35KKVE8WKQ1GPXD1JC": "/_dineway/api/media/file/01KWW4KXYF7J4W2YHV58PY3P5J.jpg",
+  "01KWW4KXXF9MAFJHZFZC3958XX": "/_dineway/api/media/file/01KWW4KXTQTNVF5YCSC1FBB7DW.jpg",
+  "01KWW4KXSR7ZTHPGJXT6PFR5J8": "/_dineway/api/media/file/01KWW4KXR4VH0Q75SCBGE3J0SA.jpg",
+  "01KWW4KXPNNK970GJ81CAEAEV5": "/_dineway/api/media/file/01KWW4KXMCC0XWYV6949RTJ0XG.jpg",
+  "01KWW4KXKYN33BZB8NP7X45PFQ": "/_dineway/api/media/file/01KWW4KXGA6BGKN1NFQ6JMX61J.jpg",
+};
+
+const galleryImages = galleryItems.map((item) => {
+  const imageData = item.data?.image;
+  const mediaId = typeof imageData === "string" ? imageData : imageData?.src || imageData?.id || "";
+  return {
+    src: MEDIA_URLS[mediaId] || "/assets/da-vinci-hinterzarten/selected/" + (item.data?.title?.toLowerCase().replace(/\s+/g, "-") || "placeholder") + ".jpg",
+    caption: item.data?.caption || item.data?.title || "",
+  };
+});
+---
+
+<Base title="Gallery – Ristorante Leonardo da Vinci Hinterzarten" description="Browse our gallery at Ristorante Leonardo da Vinci in Hinterzarten. See our wood-fired pizzas, homemade pasta, and the warm atmosphere of our Italian restaurant.">
+  <div class="page-header">
+    <div class="container">
+      <h1>Gallery</h1>
+      <p>Le nostre specialità</p>
+    </div>
+  </div>
+
+  <section style="padding: 4rem 0;">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem;">
+        {galleryImages.map(img => (
+          <div style="border-radius: 8px; overflow: hidden; background: var(--color-surface); border: 1px solid var(--color-border);">
+            <div style="aspect-ratio: 4/3; overflow: hidden;">
+              <img src={img.src} alt={img.caption} loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" />
+            </div>
+            <p style="padding: 0.75rem; font-size: 0.9rem; color: var(--color-muted);">{img.caption}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
