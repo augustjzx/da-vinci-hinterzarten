@@ -1,13 +1,18 @@
 import { execSync } from "child_process";
 import { existsSync } from "fs";
 
-const dbPath = process.env.DINEWAY_DATABASE_URL?.replace("file:", "") || "/tmp/data.db";
-const needsSeed = !existsSync(dbPath) || existsSync("./seed/seed.json");
+const dbUrl = process.env.DINEWAY_DATABASE_URL || "file:/tmp/data.db";
+const dbPath = dbUrl.replace("file:", "").split("?")[0];
+const needsSeed = !existsSync(dbPath);
 
 if (needsSeed) {
-  console.log("Database not found at", dbPath, "- running seed...");
+  console.log("Database not found at", dbPath, "- running seed with", dbUrl);
   try {
-    execSync("npx dineway seed seed/seed.json", { stdio: "inherit", cwd: process.cwd() });
+    execSync("npx dineway seed seed/seed.json", {
+      stdio: "inherit",
+      cwd: process.cwd(),
+      env: { ...process.env, DINEWAY_DATABASE_URL: dbUrl },
+    });
     console.log("Seed completed successfully");
   } catch (e) {
     console.error("Seed failed:", e.message);
