@@ -7,29 +7,25 @@ const { entries: galleryItems, cacheHint } = await getDinewayCollection("gallery
 });
 Astro.cache.set(cacheHint);
 
-const MEDIA_URLS = {
-  "01KWW4M0MJWZS5VCDYEY72D8JM": "/_dineway/api/media/file/01KWW4M0G3EQ6VD8TZK09BQD6P.jpg",
-  "01KWW4M08KPW3XP4T5PA9DPB2W": "/_dineway/api/media/file/01KWW4M04CP7P287ZVJ8G4C9CJ.jpg",
-  "01KWW4KZVW0Z0X032B0TE5RWXD": "/_dineway/api/media/file/01KWW4KZR57GDWWRZPGM8T0TZS.jpg",
-  "01KWW4KZJ6N2A8FHT1YE4J1FNF": "/_dineway/api/media/file/01KWW4KZCGZ9QXSC3DP4MQSPKJ.jpg",
-  "01KWW4KZ557QGB9G7ZX203FTWC": "/_dineway/api/media/file/01KWW4KZ1TAND1TFHBF3S1E1T2.jpg",
-  "01KWW4KYVVVDGXQ57W7HVGAWS6": "/_dineway/api/media/file/01KWW4KYP6JVAFHV5HDMRGWWDE.jpg",
-  "01KWW4KYDWR99AHVPHCBW9XNW9": "/_dineway/api/media/file/01KWW4KYAGWA06VAHQA0AAT93Y.jpg",
-  "01KWW4KY35KKVE8WKQ1GPXD1JC": "/_dineway/api/media/file/01KWW4KXYF7J4W2YHV58PY3P5J.jpg",
-  "01KWW4KXXF9MAFJHZFZC3958XX": "/_dineway/api/media/file/01KWW4KXTQTNVF5YCSC1FBB7DW.jpg",
-  "01KWW4KXSR7ZTHPGJXT6PFR5J8": "/_dineway/api/media/file/01KWW4KXR4VH0Q75SCBGE3J0SA.jpg",
-  "01KWW4KXPNNK970GJ81CAEAEV5": "/_dineway/api/media/file/01KWW4KXMCC0XWYV6949RTJ0XG.jpg",
-  "01KWW4KXKYN33BZB8NP7X45PFQ": "/_dineway/api/media/file/01KWW4KXGA6BGKN1NFQ6JMX61J.jpg",
+const IMAGE_MAP = {
+  "wood-fired-pizza": "/assets/da-vinci-hinterzarten/selected/gallery-7.jpg",
+  "restaurant-interior": "/assets/da-vinci-hinterzarten/selected/gallery-3.jpg",
+  "homemade-pasta": "/assets/da-vinci-hinterzarten/selected/gallery-14.jpg",
+  "antipasti-platter": "/assets/da-vinci-hinterzarten/selected/gallery-4.jpg",
+  "pizza-burrata": "/assets/da-vinci-hinterzarten/selected/gallery-5.jpg",
+  "davinci-sign": "/assets/da-vinci-hinterzarten/selected/gallery-2.jpg",
+  "restaurant-dining": "/assets/da-vinci-hinterzarten/selected/gallery-8.jpg",
+  "branzino-dish": "/assets/da-vinci-hinterzarten/selected/gallery-9.jpg",
+  "bistecca": "/assets/da-vinci-hinterzarten/selected/gallery-10.jpg",
+  "tiramisu": "/assets/da-vinci-hinterzarten/selected/gallery-11.jpg",
+  "restaurant-exterior": "/assets/da-vinci-hinterzarten/selected/gallery-18.jpg",
+  "outdoor-terrace": "/assets/da-vinci-hinterzarten/selected/gallery-20.jpg",
 };
 
-const galleryImages = galleryItems.map((item) => {
-  const imageData = item.data?.image;
-  const mediaId = typeof imageData === "string" ? imageData : imageData?.src || imageData?.id || "";
-  return {
-    src: MEDIA_URLS[mediaId] || "/assets/da-vinci-hinterzarten/selected/" + (item.data?.title?.toLowerCase().replace(/\s+/g, "-") || "placeholder") + ".jpg",
-    caption: item.data?.caption || item.data?.title || "",
-  };
-});
+const galleryImages = galleryItems.map((item) => ({
+  src: IMAGE_MAP[item.slug] || "/assets/da-vinci-hinterzarten/selected/gallery-2.jpg",
+  caption: item.data?.caption || item.data?.title || "",
+}));
 ---
 
 <Base title="Gallery – Ristorante Leonardo da Vinci Hinterzarten" description="Browse our gallery at Ristorante Leonardo da Vinci in Hinterzarten. See our wood-fired pizzas, homemade pasta, and the warm atmosphere of our Italian restaurant.">
