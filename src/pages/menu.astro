@@ -21,6 +21,36 @@ const grouped = {};
 for (const cat of categories) {
   grouped[cat] = menuItems.filter((item) => item.data?.category === cat);
 }
+
+const ITEM_IMAGES = {
+  "bruschetta-calabrese": "/assets/da-vinci-hinterzarten/selected/gallery-4.jpg",
+  "bruschetta-con-gamberi": "/assets/da-vinci-hinterzarten/selected/gallery-4.jpg",
+  "caprese": "/assets/da-vinci-hinterzarten/selected/gallery-4.jpg",
+  "antipasto-misto": "/assets/da-vinci-hinterzarten/selected/gallery-4.jpg",
+  "spaghetti-aglio-olio-peperoncini": "/assets/da-vinci-hinterzarten/selected/gallery-14.jpg",
+  "lasagne": "/assets/da-vinci-hinterzarten/selected/gallery-14.jpg",
+  "fettucini-crema-tartufo": "/assets/da-vinci-hinterzarten/selected/gallery-14.jpg",
+  "pizza-prosciutto-funghi": "/assets/da-vinci-hinterzarten/selected/gallery-7.jpg",
+  "pizza-burrata": "/assets/da-vinci-hinterzarten/selected/gallery-5.jpg",
+  "pizza-leonardo-da-vinci": "/assets/da-vinci-hinterzarten/selected/gallery-7.jpg",
+  "pizza-schwarzwald": "/assets/da-vinci-hinterzarten/selected/gallery-7.jpg",
+  "bistecca-alla-pizzaiola": "/assets/da-vinci-hinterzarten/selected/gallery-10.jpg",
+  "bistecca-gorgonzola": "/assets/da-vinci-hinterzarten/selected/gallery-10.jpg",
+  "tagliata-di-manzo": "/assets/da-vinci-hinterzarten/selected/gallery-10.jpg",
+  "filetto-al-tartufo": "/assets/da-vinci-hinterzarten/selected/gallery-10.jpg",
+  "grigliata-di-pesce": "/assets/da-vinci-hinterzarten/selected/gallery-9.jpg",
+  "filetto-branzino-romana": "/assets/da-vinci-hinterzarten/selected/gallery-9.jpg",
+  "tiramisu": "/assets/da-vinci-hinterzarten/selected/gallery-11.jpg",
+  "panna-cotta": "/assets/da-vinci-hinterzarten/selected/gallery-11.jpg",
+};
+const CATEGORY_IMAGES = {
+  Antipasti: "/assets/da-vinci-hinterzarten/selected/gallery-4.jpg",
+  Insalate: "/assets/da-vinci-hinterzarten/selected/gallery-4.jpg",
+  "Primi Piatti": "/assets/da-vinci-hinterzarten/selected/gallery-14.jpg",
+  Pizza: "/assets/da-vinci-hinterzarten/selected/gallery-7.jpg",
+  "Secondi Piatti": "/assets/da-vinci-hinterzarten/selected/gallery-10.jpg",
+  Dessert: "/assets/da-vinci-hinterzarten/selected/gallery-11.jpg",
+};
 ---
 
 <Base title="Menu – Ristorante Leonardo da Vinci Hinterzarten" description="Browse our authentic Italian menu at Ristorante Leonardo da Vinci in Hinterzarten. Wood-fired pizza, homemade pasta, fresh salads, and grilled specialties.">
@@ -48,15 +78,21 @@ for (const cat of categories) {
               {categoryLabels[cat] || cat}
             </h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.25rem;">
-              {items.map((item) => (
-                <div style="background: #fff; border: 1px solid var(--color-border); border-radius: 8px; padding: 1.25rem; transition: box-shadow 0.2s;">
-                  <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;">
-                    <h3 style="font-size: 1.1rem; color: var(--color-accent); margin: 0;">{item.data.title}</h3>
-                    {item.data.price && <span style="font-weight: 700; color: var(--color-dark); white-space: nowrap; font-size: 1.05rem;">{item.data.price}</span>}
+              {items.map((item) => {
+                const img = ITEM_IMAGES[item.slug] || CATEGORY_IMAGES[cat];
+                return (
+                <div style="background: #fff; border: 1px solid var(--color-border); border-radius: 8px; overflow: hidden; transition: box-shadow 0.2s;">
+                  {img && <div style="aspect-ratio: 16/9; overflow: hidden;"><img src={img} alt={item.data.title} loading="lazy" style="width: 100%; height: 100%; object-fit: cover;" /></div>}
+                  <div style="padding: 1rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;">
+                      <h3 style="font-size: 1.1rem; color: var(--color-accent); margin: 0;">{item.data.title}</h3>
+                      {item.data.price && <span style="font-weight: 700; color: var(--color-dark); white-space: nowrap; font-size: 1.05rem;">{item.data.price}</span>}
+                    </div>
+                    {item.data.description && <p style="color: var(--color-muted); font-size: 0.9rem; margin-top: 0.5rem;">{item.data.description}</p>}
                   </div>
-                  {item.data.description && <p style="color: var(--color-muted); font-size: 0.9rem; margin-top: 0.5rem;">{item.data.description}</p>}
                 </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         );
